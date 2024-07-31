@@ -1,0 +1,15 @@
+{
+  "name": "<%= project.name %>",
+  "description": "<%= project.description %>",
+  "type": "module",
+  "scripts": {
+    "start": "roll dev",
+    "build": "roll build",
+    "format": "roll format",
+    "serve": "roll serve"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@tangible/roller": "2"
+  }
+}

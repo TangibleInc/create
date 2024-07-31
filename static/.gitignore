@@ -1,0 +1,11 @@
+/vendor
+
+# Ignore lock files to allow any package manager
+composer.lock
+package-lock.json
+yarn.lock
+bun.lockb
+
+node_modules
+.idea
+.DS_Store

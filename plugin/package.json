@@ -1,0 +1,16 @@
+{
+  "name": "<%= project.name %>",
+  "description": "<%= project.description %>",
+  "type": "module",
+  "scripts": {
+    "dev": "roll dev",
+    "build": "roll build",
+    "format": "roll format",
+    "postinstall": "roll install",
+    "update": "roll update"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@tangible/roller": "2"
+  }
+}

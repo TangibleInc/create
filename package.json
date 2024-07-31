@@ -1,0 +1,37 @@
+{
+  "name": "create-tangible",
+  "version": "0.0.1",
+  "description": "",
+  "type": "module",
+  "main": "index.js",
+  "bin": {
+    "create-tangible": "cli.js"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "release": "npm publish --access public",
+    "test": "node tests/index.js"
+  },
+  "files": [
+    "*.js",
+    "plugin",
+    "theme",
+    "site",
+    "static",
+    "license.txt",
+    "package.json",
+    "readme.md"
+  ],
+  "dependencies": {
+    "case": "^1.6.3",
+    "eta": "^3.4.0",
+    "fs-extra": "^11.2.0",
+    "globby": "^14.0.2",
+    "inquirer": "^10.1.4",
+    "picocolors": "^1.0.1"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "testra": "^2.1.4"
+  }
+}

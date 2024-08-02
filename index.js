@@ -135,7 +135,11 @@ export async function createProject(options = {}) {
   ]
   await fs.copy(templatePath, projectPath, {
     filter: (filePath) => {
-      const folders = filePath.split('/')
+      /**
+       * Check file path relative to template folder, in case it's inside
+       * node_modules.
+       */ 
+      const folders = path.relative(templatePath, filePath).split('/')
       for (const folder of folders) {
         if (ignore.includes(folder)) return false
       }

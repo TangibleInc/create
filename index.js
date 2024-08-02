@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 import path from 'path'
 import { fileURLToPath } from 'url'
 import { execSync, spawn } from 'child_process'

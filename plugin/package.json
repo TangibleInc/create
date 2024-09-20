@@ -1,8 +1,10 @@
 {
-  "name": "<%= project.name %>",
-  "description": "<%= project.description %>",
+  "name": "project-name",
+  "description": "project-description",
+  "version": "0.0.1",
   "type": "module",
   "scripts": {
+    "start": "concurrently --raw 'roll dev' 'wp-now start --blueprint=blueprint.dev.json'",
     "dev": "roll dev",
     "build": "roll build",
     "format": "roll format",
@@ -11,6 +13,8 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@tangible/roller": "2"
+    "@tangible/now": "1",
+    "@tangible/roller": "2",
+    "concurrently": "^9.0.1"
   }
 }

@@ -33,8 +33,8 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
       cwd: buildPath,
       project: {
         type: 'plugin',
-        name: 'plugin',
-        title: 'Plugin',
+        name: 'example-plugin',
+        title: 'Example Plugin',
         overwrite: true,
       },
     })

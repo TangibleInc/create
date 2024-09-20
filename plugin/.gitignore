@@ -1,4 +1,6 @@
 /build
+/publish
+/vendor
 
 # Ignore lock files to allow any package manager
 composer.lock

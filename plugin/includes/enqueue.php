@@ -8,15 +8,15 @@ add_action('wp_enqueue_scripts', function() use ($plugin) {
   $version = $plugin->version;
 
   wp_enqueue_style(
-    '<%= project.name %>',
-    $url . 'assets/build/<%= project.name %>.min.css',
+    'project-name',
+    $url . 'assets/build/project-name.min.css',
     [],
     $version
   );
 
   wp_enqueue_script(
-    '<%= project.name %>',
-    $url . 'assets/build/<%= project.name %>.min.js',
+    'project-name',
+    $url . 'assets/build/project-name.min.js',
     ['jquery'],
     $version
   );

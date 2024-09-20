@@ -1,6 +1,7 @@
 <?php
+use tangible\framework;
 
-tangible\plugin\register_settings([
+framework\register_plugin_settings($plugin, [
   'css' => $plugin->assets_url . '/build/admin.min.css',
   'title_callback' => function() use ($plugin) {
     ?>
@@ -12,4 +13,12 @@ tangible\plugin\register_settings([
       <?= $plugin->title ?>
     <?php
   },
+  'tabs' => [
+    'welcome' => [
+      'title' => 'Welcome',
+      'callback' => function() {
+        ?>project-description<?php
+      }
+    ]
+  ],
 ]);

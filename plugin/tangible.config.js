@@ -5,11 +5,11 @@ export default {
 
     // {
     //   src: 'assets/src/index.js',
-    //   dest: 'assets/build/<%= project.name %>.min.js'
+    //   dest: 'assets/build/project-name.min.js'
     // },
     // {
     //   src: 'assets/src/index.scss',
-    //   dest: 'assets/build/<%= project.name %>.min.css'
+    //   dest: 'assets/build/project-name.min.css'
     // },
 
     // Admin

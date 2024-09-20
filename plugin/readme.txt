@@ -1,4 +1,4 @@
-=== <%= project.title %> ===
+=== project-title ===
 Stable tag: trunk
 Requires at least: 4.0
 Tested up to: 6.0
@@ -7,7 +7,7 @@ License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags:
 
-<%= project.description %>
+project-description
 
 == Description ==
 

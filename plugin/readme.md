@@ -1,12 +1,12 @@
-# <%= project.title %>
+# project-title
 
-Here's a description of the project.
+project-description
 
 ## Getting started
 
 ```sh
-git clone git@bitbucket.org:tangibleinc/<%= project.name %>.git
-cd <%= project.name %>
+git clone git@bitbucket.org:tangibleinc/project-name.git
+cd project-name
 npm install
 ```
 

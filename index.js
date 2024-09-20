@@ -71,18 +71,18 @@ export async function createProject(options = {}) {
           name: 'Static HTML Page',
           value: 'static',
         },
-        // {
-        //   name: 'WordPress site',
-        //   value: 'site',
-        // },
-        // {
-        //   name: 'WordPress plugin',
-        //   value: 'plugin',
-        // },
-        // {
-        //   name: 'WordPress theme',
-        //   value: 'theme',
-        // },
+        {
+          name: 'WordPress plugin',
+          value: 'plugin',
+        },
+        {
+          name: 'WordPress theme',
+          value: 'theme',
+        },
+        {
+          name: 'WordPress site',
+          value: 'site',
+        },
       ],
     },
     {
@@ -116,7 +116,7 @@ export async function createProject(options = {}) {
 
   console.log(
     `Create project "${projectName}" ` +
-      chalk.gray('- Press CTRL + C to quit at any time')
+      chalk.gray('- Press CTRL + C to quit at any time'),
   )
 
   await fs.mkdir(projectPath, {
@@ -138,7 +138,7 @@ export async function createProject(options = {}) {
       /**
        * Check file path relative to template folder, in case it's inside
        * node_modules.
-       */ 
+       */
       const folders = path.relative(templatePath, filePath).split('/')
       for (const folder of folders) {
         if (ignore.includes(folder)) return false
@@ -148,7 +148,7 @@ export async function createProject(options = {}) {
   })
 
   /**
-   * Replace placeholders using Eta template engine
+   * Replace placeholders <% %> using Eta template engine
    */
 
   const templateContext = {
@@ -166,6 +166,9 @@ export async function createProject(options = {}) {
     async: true,
   }
 
+  /**
+   * File extensions to process
+   */
   const extensions = [
     'css',
     'html',
@@ -187,36 +190,50 @@ export async function createProject(options = {}) {
     const filePath = path.join(projectPath, file)
 
     let content = await fs.readFile(filePath, 'utf8')
-    if (!content.includes('<%')) continue
-    console.log('Process', file)
 
-    // https://eta.js.org/docs/syntax/async
+    if (!content.includes('<%')) {
+      console.log('Process', file)
 
-    try {
-      const fn = await eta.compile(content, {
-        ...etaOptions,
-        // Support include() relative to tempate file
-        async include(target) {
-          const dirPath = path.dirname(filePath)
-          // Resolve relative file path
-          const targetFilePath = path.resolve(dirPath, target)
-          try {
-            return await fs.readFile(targetFilePath, 'utf8')
-          } catch (e) {
-            console.log(
-              'Error building template',
-              path.relative(projectPath, filePath)
-            )
-            console.error(e.message)
-          }
-          return ''
-        },
-      })
-      content = await eta.renderAsync(fn, templateContext)
-    } catch (e) {
-      console.error(e)
-      return
+      // https://eta.js.org/docs/syntax/async
+
+      try {
+        const fn = await eta.compile(content, {
+          ...etaOptions,
+          // Support include() relative to tempate file
+          async include(target) {
+            const dirPath = path.dirname(filePath)
+            // Resolve relative file path
+            const targetFilePath = path.resolve(dirPath, target)
+            try {
+              return await fs.readFile(targetFilePath, 'utf8')
+            } catch (e) {
+              console.log(
+                'Error building template',
+                path.relative(projectPath, filePath),
+              )
+              console.error(e.message)
+            }
+            return ''
+          },
+        })
+        content = await eta.renderAsync(fn, templateContext)
+      } catch (e) {
+        console.error(e)
+        continue
+      }
     }
+
+    /**
+     * Alternative syntax for placeholders - Added for convenience of
+     * developing project templates directly, because the <% %> format
+     * can be a syntax error in source files.
+     */
+    content = content
+      .replaceAll('project-title', project.title)
+      .replaceAll('project-description', project.description)
+      .replaceAll('project-name', project.name)
+      .replaceAll('project_name', changeCase.snake(project.name))
+      .replaceAll('PROJECT_NAME', changeCase.constant(project.name))
 
     await fs.writeFile(filePath, content)
   }
@@ -246,7 +263,11 @@ export async function createProject(options = {}) {
   }
 
   console.log('Install dependencies')
-  await run(`npm install --audit=false --loglevel=error`, { silent: true })
+  try {
+    await run(`bun install`, { silent: true })
+  } catch (e) {
+    await run(`npm install --audit=false --loglevel=error`, { silent: true })
+  }
 
   console.log(`
 Start by running:

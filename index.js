@@ -129,6 +129,7 @@ export async function createProject(options = {}) {
   const ignore = [
     'build',
     'bun.lockb',
+    '.gitkeep',
     'node_modules',
     'package-lock.json',
     'vendor',

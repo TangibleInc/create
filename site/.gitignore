@@ -1,0 +1,17 @@
+/publish
+/vendor
+
+# Created by wp-now, will not be necessary in the future
+/database
+/db.php
+/mu-plugins/sqlite-database-integration*
+
+# Ignore lock files to allow any package manager
+composer.lock
+package-lock.json
+yarn.lock
+bun.lockb
+
+node_modules
+.idea
+.DS_Store

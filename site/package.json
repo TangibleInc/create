@@ -1,0 +1,13 @@
+{
+  "name": "project-name",
+  "description": "project-description",
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "start": "wp-now start --blueprint=blueprint.dev.json"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@tangible/now": "1"
+  }
+}

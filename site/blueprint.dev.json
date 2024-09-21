@@ -1,0 +1,8 @@
+{
+  "steps": [
+    {
+      "step": "activateTheme",
+      "themeFolderName": "blank"
+    }
+  ]
+}

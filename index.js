@@ -192,7 +192,7 @@ export async function createProject(options = {}) {
 
     let content = await fs.readFile(filePath, 'utf8')
 
-    if (!content.includes('<%')) {
+    if (content.includes('<%')) {
       console.log('Process', file)
 
       // https://eta.js.org/docs/syntax/async

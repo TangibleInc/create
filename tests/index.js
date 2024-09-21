@@ -41,6 +41,32 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
     ok(true, 'create plugin')
   })
 
+  test('theme', async () => {
+    await createProject({
+      cwd: buildPath,
+      project: {
+        type: 'theme',
+        name: 'example-theme',
+        title: 'Example Theme',
+        overwrite: true,
+      },
+    })
+    ok(true, 'create theme')
+  })
+
+  test('site', async () => {
+    await createProject({
+      cwd: buildPath,
+      project: {
+        type: 'site',
+        name: 'example-site',
+        title: 'Example Site',
+        overwrite: true,
+      },
+    })
+    ok(true, 'create site')
+  })
+
   run()
 
 })().catch(console.error)

@@ -17,7 +17,7 @@ framework\register_plugin_settings($plugin, [
     'welcome' => [
       'title' => 'Welcome',
       'callback' => function() {
-        ?>project-description<?php
+        ?>Hello, world.<?php
       }
     ]
   ],

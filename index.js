@@ -24,6 +24,29 @@ export async function createProject(options = {}) {
 
   const questions = [
     {
+      type: 'select',
+      name: 'type',
+      message: 'Select project type',
+      choices: [
+        {
+          name: 'Static HTML Page',
+          value: 'static',
+        },
+        {
+          name: 'WordPress plugin',
+          value: 'plugin',
+        },
+        {
+          name: 'WordPress theme',
+          value: 'theme',
+        },
+        {
+          name: 'WordPress site',
+          value: 'site',
+        },
+      ],
+    },
+    {
       type: 'input',
       name: 'name',
       required: true,
@@ -61,29 +84,6 @@ export async function createProject(options = {}) {
           recursive: true,
         })
       },
-    },
-    {
-      type: 'select',
-      name: 'type',
-      message: 'Select project type',
-      choices: [
-        {
-          name: 'Static HTML Page',
-          value: 'static',
-        },
-        {
-          name: 'WordPress plugin',
-          value: 'plugin',
-        },
-        {
-          name: 'WordPress theme',
-          value: 'theme',
-        },
-        {
-          name: 'WordPress site',
-          value: 'site',
-        },
-      ],
     },
     {
       type: 'input',

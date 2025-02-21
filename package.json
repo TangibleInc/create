@@ -9,13 +9,14 @@
   },
   "scripts": {
     "start": "node index.js",
-    "release": "npm publish --access public",
-    "test": "node tests/index.js"
+    "test": "node tests/index.js",
+    "release": "npm publish --access public"
   },
   "files": [
     "*.js",
-    "plugin",
-    "theme",
+    "example-plugin",
+    "example-theme",
+    "run",
     "site",
     "static",
     "license.txt",

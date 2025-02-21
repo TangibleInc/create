@@ -25,5 +25,5 @@ They're based on the following shared libraries.
 
 - [Roller](https://github.com/TangibleInc/tangible-roller) to compile Sass/TypeScript/JSX
 - [Framework](https://github.com/TangibleInc/framework/) - Common plugin/theme features
-- [Updater](https://github.com/TangibleInc/plugin-updater) - Plugin/theme updater to integrate with Update Server
+- [Updater](https://github.com/TangibleInc/updater) - Plugin/theme updater to integrate with Update Server
 - [`wp-now`](https://github.com/WordPress/playground-tools/tree/trunk/packages/wp-now#readme) for local development with minimal requirement (Node or Bun)

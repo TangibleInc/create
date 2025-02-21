@@ -1,0 +1,12 @@
+{
+  "core": "WordPress/WordPress",
+  "phpVersion": "8.2",
+  "themes": [
+    "."
+  ],
+  "config": {
+    "WP_DEBUG": true
+  },
+  "mappings": {
+  }
+}

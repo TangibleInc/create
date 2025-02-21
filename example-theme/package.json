@@ -1,0 +1,31 @@
+{
+  "name": "example-theme",
+  "description": "Description of example theme",
+  "version": "0.0.1",
+  "type": "module",
+  "homepage": "https://github.com/tangibleinc/example-theme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tangibleinc/example-theme.git"
+  },
+  "scripts": {
+    "start": "wp-now start --blueprint=blueprint.dev.json",
+    "dev": "concurrently --raw 'roll dev' 'npm run start'",
+    "build": "roll build",
+    "format": "roll format",
+    "postinstall": "roll install",
+    "update": "roll update",
+    "install:dev": "roll install --dev",
+    "update:dev": "roll update --dev",
+    "archive": "roll archive"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@tangible/now": "^2.0.4",
+    "@tangible/roller": "^2.1.4",
+    "concurrently": "^9.1.2"
+  },
+  "author": "Team Tangible",
+  "license": "MIT",
+  "keywords": []
+}

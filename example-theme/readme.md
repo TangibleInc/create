@@ -1,12 +1,12 @@
-# Example Static
+# Example Theme
 
-Description of example static
+Description of example theme
 
 ## Getting started
 
 ```sh
-git clone git@bitbucket.org:tangibleinc/example-static.git
-cd example-static
+git clone git@bitbucket.org:tangibleinc/example-theme.git
+cd example-theme
 npm install
 ```
 

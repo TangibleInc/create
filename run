@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+SCRIPT_DIR=$( dirname "$(realpath "$0")")
+SCRIPT_PATH="$SCRIPT_DIR/cli.js"
+
+# Check if 'bun' is available, otherwise use 'node'
+if command -v bun &> /dev/null
+then
+    bun "$SCRIPT_PATH" "$@"
+else
+    node "$SCRIPT_PATH" "$@"
+fi

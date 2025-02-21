@@ -1,6 +1,6 @@
 {
-  "name": "<%= project.name %>",
-  "description": "<%= project.description %>",
+  "name": "example-static",
+  "description": "Description of example static",
   "type": "module",
   "scripts": {
     "start": "roll dev",

@@ -5,12 +5,15 @@ import { execSync, spawn } from 'child_process'
 import fs from 'fs-extra' // https://github.com/jprichardson/node-fs-extra/
 import { globby as glob } from 'globby' // https://github.com/sindresorhus/globby
 import chalk from 'picocolors'
-import { Eta } from 'eta'
 import createCaseConverter from './case.js'
 import { prompt } from './prompt.js'
 
 const changeCase = createCaseConverter()
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
+
+async function getPackageJson() {
+  return await fs.readJson(path.join(__dirname, 'package.json'))
+}
 
 /**
  * Create project from template
@@ -22,16 +25,15 @@ export async function createProject(options = {}) {
     project: projectConfig,
   } = options
 
+  // const pkg = await getPackageJson()
+  // console.log(pkg.name, pkg.version)
+
   const questions = [
     {
       type: 'select',
       name: 'type',
       message: 'Select project type',
       choices: [
-        {
-          name: 'Static HTML Page',
-          value: 'static',
-        },
         {
           name: 'WordPress plugin',
           value: 'plugin',
@@ -43,6 +45,10 @@ export async function createProject(options = {}) {
         {
           name: 'WordPress site',
           value: 'site',
+        },
+        {
+          name: 'Static HTML page',
+          value: 'static',
         },
       ],
     },
@@ -123,7 +129,11 @@ export async function createProject(options = {}) {
     recursive: true,
   })
 
-  const templatePath = path.join(__dirname, project.type)
+  const templatePath = path.join(__dirname,
+    ['plugin', 'theme'].includes(project.type)
+      ? `example-${project.type}`
+      : project.type
+  )
 
   console.log('Copy template type', project.type)
   const ignore = [
@@ -148,25 +158,15 @@ export async function createProject(options = {}) {
     },
   })
 
-  /**
-   * Replace placeholders <% %> using Eta template engine
-   */
-
   const templateContext = {
     project,
     ...changeCase,
   }
 
-  // https://eta.js.org/docs/api
-  const eta = new Eta({
-    useWith: true,
-    autoEscape: false,
-    autoTrim: false,
-  })
-  const etaOptions = {
-    async: true,
-  }
+  // plugin, theme, site
+  const projectType = project.type === 'static' ? 'site' : project.type
 
+  console.log('Project type', projectType)
   /**
    * File extensions to process
    */
@@ -192,49 +192,28 @@ export async function createProject(options = {}) {
 
     let content = await fs.readFile(filePath, 'utf8')
 
-    if (content.includes('<%')) {
-      console.log('Process', file)
-
-      // https://eta.js.org/docs/syntax/async
-
-      try {
-        const fn = await eta.compile(content, {
-          ...etaOptions,
-          // Support include() relative to tempate file
-          async include(target) {
-            const dirPath = path.dirname(filePath)
-            // Resolve relative file path
-            const targetFilePath = path.resolve(dirPath, target)
-            try {
-              return await fs.readFile(targetFilePath, 'utf8')
-            } catch (e) {
-              console.log(
-                'Error building template',
-                path.relative(projectPath, filePath),
-              )
-              console.error(e.message)
-            }
-            return ''
-          },
-        })
-        content = await eta.renderAsync(fn, templateContext)
-      } catch (e) {
-        console.error(e)
-        continue
-      }
-    }
-
     /**
-     * Alternative syntax for placeholders - Added for convenience of
-     * developing project templates directly, because the <% %> format
-     * can be a syntax error in source files.
+     * Very simple format for placeholders, for convenience of
+     * developing project templates directly. Previously used Eta with
+     * `<% %>` which was often a syntax error in source files.
      */
     content = content
-      .replaceAll('project-title', project.title)
-      .replaceAll('project-description', project.description)
-      .replaceAll('project-name', project.name)
-      .replaceAll('project_name', changeCase.snake(project.name))
-      .replaceAll('PROJECT_NAME', changeCase.constant(project.name))
+      // Descriptionn
+      .replaceAll(`Description of example ${projectType}`, project.description)
+      // Kebab case slug
+      .replaceAll(`example-${projectType}`, project.name)
+      // Title case
+      .replaceAll(
+        `Example ${projectType[0].toUpperCase() + projectType.slice(1)}`,
+        project.title,
+      )
+      // Snake case
+      .replaceAll(`example_${projectType}`, changeCase.snake(project.name))
+      // Constant case
+      .replaceAll(
+        `EXAMPLE_${changeCase.constant(projectType)}`,
+        changeCase.constant(project.name),
+      )
 
     await fs.writeFile(filePath, content)
   }
@@ -252,7 +231,7 @@ export async function createProject(options = {}) {
       }
     })
 
-  const pluginPath = path.join(projectPath, 'tangible-plugin.php')
+  const pluginPath = path.join(projectPath, 'example-plugin.php')
   if (await fs.exists(pluginPath)) {
     const entryFile = `${project.name}.php`
     console.log('Rename plugin entry file to', entryFile)

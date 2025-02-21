@@ -1,1 +1,1 @@
-hi
+Hello from example theme in <code>./themes/blank</code>.

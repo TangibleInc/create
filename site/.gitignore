@@ -6,7 +6,7 @@
 /db.php
 /mu-plugins/sqlite-database-integration*
 
-# Ignore lock files to allow any package manager
+# Support any package manager
 composer.lock
 package-lock.json
 yarn.lock

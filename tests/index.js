@@ -20,7 +20,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
       cwd: buildPath,
       project: {
         type: 'static',
-        name: 'static',
+        name: 'example-site-static',
         title: 'Static HTML site',
         overwrite: true,
       },
@@ -59,8 +59,8 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
       cwd: buildPath,
       project: {
         type: 'site',
-        name: 'example-site',
-        title: 'Example Site',
+        name: 'example-site-wordpress',
+        title: 'Example Site on WordPress',
         overwrite: true,
       },
     })

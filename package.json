@@ -5,7 +5,7 @@
   "type": "module",
   "main": "index.js",
   "bin": {
-    "create-tangible": "cli.js"
+    "create-tangible": "run"
   },
   "scripts": {
     "start": "node index.js",
@@ -23,12 +23,11 @@
     "readme.md"
   ],
   "dependencies": {
-    "@inquirer/prompts": "^5.5.0",
+    "@inquirer/prompts": "^7.3.2",
     "case": "^1.6.3",
-    "eta": "^3.4.0",
-    "fs-extra": "^11.2.0",
-    "globby": "^14.0.2",
-    "picocolors": "^1.0.1"
+    "fs-extra": "^11.3.0",
+    "globby": "^14.1.0",
+    "picocolors": "^1.1.1"
   },
   "devDependencies": {
     "testra": "^2.1.4"

@@ -1,10 +1,21 @@
 tests/build
+*/artifacts
+*/publish
+*/vendor
+
+# Testing
+.phpunit.cache
+.wp-env.override.json
+coverage
+test-results
+wordpress-develop
 
 # Ignore lock files to allow any package manager
 composer.lock
 package-lock.json
 yarn.lock
 bun.lockb
+bun.lock
 
 node_modules
 .idea

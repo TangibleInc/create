@@ -5,7 +5,7 @@ export default {
       dest: 'build'
     },
     {
-      src: 'src/index.js',
+      src: 'src/index.ts',
       dest: 'build/index.min.js'
     },
     {

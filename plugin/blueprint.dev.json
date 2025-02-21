@@ -1,9 +1,0 @@
-{
-  "steps": [
-    {
-      "step": "activatePlugin",
-      "pluginName": "E2E",
-      "pluginPath": "/var/www/html/wp-content/plugins/e2e-plugin"
-    }
-  ]
-}

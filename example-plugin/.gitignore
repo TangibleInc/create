@@ -1,0 +1,23 @@
+/artifacts
+/publish
+/vendor
+node_modules
+*.log
+*.local.js
+
+# Ignore lock files to allow any package manager
+bun.lock
+bun.lockb
+package-lock.json
+yarn.lock
+
+# Testing
+/.phpunit.cache
+/.wp-env.override.json
+/artifacts
+/coverage
+/test-results
+wordpress-develop
+
+*.swp
+.idea

@@ -1,11 +1,10 @@
+/publish
 /vendor
 
 # Ignore lock files to allow any package manager
-composer.lock
 package-lock.json
 yarn.lock
 bun.lockb
-bun.lock
 
 node_modules
 .idea

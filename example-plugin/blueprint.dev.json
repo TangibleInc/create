@@ -1,0 +1,28 @@
+{
+  "landingPage": "/wp-admin/options-general.php?page=example-plugin-settings",
+  "steps": [
+    {
+      "step": "setSiteOptions",
+      "options": {
+        "blogname": "Example Plugin",
+        "blogdescription": ""
+      }
+    },
+    {
+      "step": "defineWpConfigConsts",
+      "consts": {
+        "WP_DEBUG": true
+      },
+      "method": "rewrite-wp-config"
+    },
+    {
+      "step": "login",
+      "username": "admin"
+    },
+    {
+      "step": "activatePlugin",
+      "pluginName": "Example Plugin",
+      "pluginPath": "/var/www/html/wp-content/plugins/example-plugin"
+    }
+  ]
+}

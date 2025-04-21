@@ -1,5 +1,7 @@
 import { test, is, ok, run } from 'testra'
-import { getServer } from '@tangible/env'
+import { getServer } from './server.ts'
+
+const pluginName = 'example-plugin'
 
 /**
  * For syntax highlight of PHP in template strings, install:
@@ -18,7 +20,7 @@ export default run(async () => {
     phpVersion: process.env.PHP_VERSION || '8.2',
     mappings: process.env.TEST_ARCHIVE
       ? {
-          'wp-content/plugins/example-plugin': '../publish/example-plugin',
+          [`wp-content/plugins/${pluginName}`]: `../../publish/${pluginName}`,
         }
       : {},
     reset: true,
@@ -35,11 +37,11 @@ export default run(async () => {
 async function ensurePlugin({ wpx }) {
   return wpx/* php */ `
 
-if (!function_exists('tangible_template')) {
+if (!function_exists('example_plugin')) {
   if (!function_exists('activate_plugin')) {
     require ABSPATH . 'wp-admin/includes/plugin.php';
   }
-  $result = activate_plugin(ABSPATH . 'wp-content/plugins/example-plugin/example-plugin.php');
+  $result = activate_plugin(ABSPATH . 'wp-content/plugins/${pluginName}/${pluginName}.php');
   if (is_wp_error($result)) return $result;
 }
 

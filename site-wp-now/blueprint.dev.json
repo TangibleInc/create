@@ -1,0 +1,16 @@
+{
+  "steps": [
+    {
+      "step": "login",
+      "username": "admin"
+    },
+    {
+      "step": "activateTheme",
+      "themeFolderName": "example"
+    },
+    {
+      "step": "activatePlugin",
+      "pluginPath": "/var/www/html/wp-content/plugins/example"
+    }
+  ]
+}

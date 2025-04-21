@@ -1,12 +1,12 @@
-# Example Static
+# Example Site
 
-Description of example static
+Description of example site
 
 ## Getting started
 
 ```sh
-git clone git@bitbucket.org:tangibleinc/example-static.git
-cd example-static
+git clone git@bitbucket.org:tangibleinc/example-site.git
+cd example-site
 npm install
 ```
 

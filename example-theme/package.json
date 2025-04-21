@@ -21,7 +21,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@tangible/now": "^2.0.4",
+    "@tangible/now": "^3.0.2",
     "@tangible/roller": "^2.1.4",
     "concurrently": "^9.1.2"
   },

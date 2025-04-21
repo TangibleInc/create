@@ -16,6 +16,10 @@
       "method": "rewrite-wp-config"
     },
     {
+      "step": "runPHP",
+      "code": "<?php include '/var/www/html/wp-load.php'; global $wp_rewrite; $wp_rewrite->set_permalink_structure('/%postname%/'); $wp_rewrite->flush_rules();"
+    },
+    {
       "step": "login",
       "username": "admin"
     },

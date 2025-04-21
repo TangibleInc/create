@@ -1,6 +1,6 @@
 {
   "name": "create-tangible",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "",
   "type": "module",
   "main": "index.js",
@@ -24,14 +24,14 @@
     "readme.md"
   ],
   "dependencies": {
-    "@inquirer/prompts": "^7.3.2",
+    "@inquirer/prompts": "^7.4.1",
     "case": "^1.6.3",
     "fs-extra": "^11.3.0",
     "globby": "^14.1.0",
     "picocolors": "^1.1.1"
   },
   "devDependencies": {
-    "testra": "^2.1.4"
+    "testra": "^2.1.5"
   },
   "license": "MIT"
 }

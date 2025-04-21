@@ -1,13 +1,15 @@
-import { describe, test, expect } from '@tangible/env/playwright'
+import { test, expect } from '@wordpress/e2e-test-utils-playwright'
+
+const { describe } = test
 
 /**
- * Tests to exercise the frontend and admin features of Tangible Blocks.
+ * Tests to exercise the frontend and admin features
  *
  * Note: To interact with pages, locate elements by user-visible locators like
  * accessible role, instead of CSS selectors which can change.
  *
- * @see https://playwright.dev/docs/locators#locating-elements
- * @see https://playwright.dev/docs/locators#locate-by-role
+ * @see https://developer.wordpress.org/block-editor/contributors/code/testing-overview/e2e/
+ * @see https://playwright.dev/docs/locators
  * @see https://www.w3.org/TR/html-aria/#docconformance
  */
 

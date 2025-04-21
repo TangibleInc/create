@@ -1,4 +1,23 @@
 {
+  "landingPage": "/wp-admin",
   "steps": [
+    {
+      "step": "setSiteOptions",
+      "options": {
+        "blogname": "Example Theme",
+        "blogdescription": ""
+      }
+    },
+    {
+      "step": "defineWpConfigConsts",
+      "consts": {
+        "WP_DEBUG": true
+      },
+      "method": "rewrite-wp-config"
+    },
+    {
+      "step": "login",
+      "username": "admin"
+    }
   ]
 }

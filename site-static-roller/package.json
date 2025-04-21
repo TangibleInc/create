@@ -1,6 +1,6 @@
 {
-  "name": "example-static",
-  "description": "Description of example static",
+  "name": "example-site",
+  "description": "Description of example site",
   "type": "module",
   "scripts": {
     "start": "roll dev",
@@ -10,6 +10,6 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@tangible/roller": "2"
+    "@tangible/roller": "^2.1.4"
   }
 }

@@ -36,20 +36,32 @@ export async function createProject(options = {}) {
       choices: [
         {
           name: 'WordPress plugin',
-          value: 'plugin',
+          value: 'example-plugin',
         },
         {
           name: 'WordPress theme',
-          value: 'theme',
+          value: 'example-theme',
         },
+        // {
+        //   name: 'WordPress site - Using wp-env and Docker',
+        //   value: 'site-wp-env',
+        // },
         {
-          name: 'WordPress site',
-          value: 'site',
+          name: 'WordPress site - Using wp-now and PHP-WASM',
+          value: 'site-wp-now',
         },
+        // {
+        //   name: 'WordPress site (Docker)',
+        //   value: 'site-docker',
+        // },
         {
-          name: 'Static HTML page',
-          value: 'static',
+          name: 'Static HTML page - Using Tangible Roller',
+          value: 'site-static-roller',
         },
+        // {
+        //   name: 'Static HTML page - Using Vite',
+        //   value: 'site-static-vite',
+        // },
       ],
     },
     {
@@ -118,24 +130,34 @@ export async function createProject(options = {}) {
   const projectName = project.name
   const projectPath = path.join(cwd, projectName)
 
+  const alias = {
+    static: 'site-static-roller',
+    plugin: 'example-plugin',
+    theme: 'example-theme',
+    site: 'site-wp-now', // TODO: Replace with site-wp-env
+  }
+
+  const projectTemplateType = alias[project.type] || project.type
+
   // Create project folder and copy template
 
   console.log(
     `Create project "${projectName}" ` +
-      chalk.gray('- Press CTRL + C to quit at any time'),
+      chalk.gray('- Press CTRL + C to quit at any time')
   )
 
   await fs.mkdir(projectPath, {
     recursive: true,
   })
 
-  const templatePath = path.join(__dirname,
-    ['plugin', 'theme'].includes(project.type)
-      ? `example-${project.type}`
-      : project.type
-  )
+  const templatePath = path.join(__dirname, projectTemplateType)
 
-  console.log('Copy template type', project.type)
+  if (!await fs.exists(templatePath)) {
+    console.log('Template does not exist:', projectTemplateType)
+    return
+  }
+
+  console.log('Copy template type', projectTemplateType)
   const ignore = [
     'build',
     'bun.lockb',
@@ -164,7 +186,11 @@ export async function createProject(options = {}) {
   }
 
   // plugin, theme, site
-  const projectType = project.type === 'static' ? 'site' : project.type
+  const projectType = projectTemplateType.startsWith('site-')
+    ? 'site'
+    : projectTemplateType.startsWith('example-')
+      ? projectTemplateType.replace('example-', '')
+      : projectTemplateType
 
   console.log('Project type', projectType)
   /**
@@ -205,14 +231,14 @@ export async function createProject(options = {}) {
       // Title case
       .replaceAll(
         `Example ${projectType[0].toUpperCase() + projectType.slice(1)}`,
-        project.title,
+        project.title
       )
       // Snake case
       .replaceAll(`example_${projectType}`, changeCase.snake(project.name))
       // Constant case
       .replaceAll(
         `EXAMPLE_${changeCase.constant(projectType)}`,
-        changeCase.constant(project.name),
+        changeCase.constant(project.name)
       )
 
     await fs.writeFile(filePath, content)

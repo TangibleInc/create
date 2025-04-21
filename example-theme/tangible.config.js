@@ -21,7 +21,7 @@ export default {
     src: [
       '*.php',
       'assets/**',
-      'includes',
+      'includes/**',
       'vendor/tangible/**',
       'readme.txt'
     ],

@@ -4,7 +4,7 @@ Description of example plugin
 
 ## Develop
 
-Prerequisites: [Git](https://git-scm.com/), [Node](https://nodejs.org/en/) (version 18 and above)
+Prerequisites: Linux, macOS, or Windows ([WSL](https://learn.microsoft.com/en-us/windows/wsl/about)); [Git](https://git-scm.com/), [Node](https://nodejs.org/en/) (version 20 and above)
 
 Clone the repository and install dependencies.
 

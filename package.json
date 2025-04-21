@@ -1,6 +1,6 @@
 {
   "name": "create-tangible",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "",
   "type": "module",
   "main": "index.js",
@@ -17,8 +17,11 @@
     "example-plugin",
     "example-theme",
     "run",
-    "site",
-    "static",
+    "site-docker",
+    "site-static-roller",
+    "site-static-vite",
+    "site-wp-env",
+    "site-wp-now",
     "license.txt",
     "package.json",
     "readme.md"

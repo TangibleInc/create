@@ -20,10 +20,15 @@ export default {
     root: 'example-theme',
     src: [
       '*.php',
+      '*.css',
+      'theme.json',
       'assets/**',
       'includes/**',
+      'parts/**',
+      'styles/**',
+      'templates/**',
       'vendor/tangible/**',
-      'readme.txt'
+      'readme.*'
     ],
     dest: 'publish/example-theme.zip',
     exclude: [

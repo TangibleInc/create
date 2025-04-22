@@ -6,6 +6,7 @@
 [subrepo]
 	remote = git@github.com:TangibleInc/example-plugin
 	branch = main
-	commit = 
+	commit = 11820d7ed47e02002a883a53e44d6430aef486ab
 	method = merge
 	cmdver = 0.4.6
+	parent = 9028bccf3867585dc53cbeb6ef66be78565051bd

@@ -39,6 +39,7 @@
     "picocolors": "^1.1.1"
   },
   "devDependencies": {
+    "@tangible/git-subrepo": "^1.0.1",
     "testra": "^2.1.5"
   },
   "license": "MIT"

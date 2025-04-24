@@ -26,13 +26,7 @@ function example_plugin($instance = false) {
 
 add_action('plugins_loaded', function() {
 
-  /**
-   * Don't load during plugin activation: the newest version of Framework is
-   * not guaranteed due to how WordPress runs the `plugins_loaded` action *before*
-   * loading plugins and modules, short-circuiting the version comparison logic.
-   * @see https://developer.wordpress.org/reference/functions/register_activation_hook/#more-information
-   * @see https://github.com/WordPress/wordpress-develop/blob/8a52d746e9bb85604f6a309a87d22296ce1c4280/src/wp-admin/includes/plugin.php#L2381C10-L2381C31
-   */
+  // See https://github.com/TangibleInc/framework/#note-on-plugin-activation
   if (defined('WP_SANDBOX_SCRAPING')) return;
 
   $plugin    = framework\register_plugin([

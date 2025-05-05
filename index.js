@@ -35,6 +35,10 @@ export async function createProject(options = {}) {
       message: 'Select project type',
       choices: [
         {
+          name: 'Static page with HTML/CSS/JS',
+          value: 'site-roller',
+        },
+        {
           name: 'WordPress plugin',
           value: 'example-plugin',
         },
@@ -42,26 +46,14 @@ export async function createProject(options = {}) {
           name: 'WordPress theme',
           value: 'example-theme',
         },
-        // {
-        //   name: 'WordPress site - Using wp-env and Docker',
-        //   value: 'site-wp-env',
-        // },
         {
-          name: 'WordPress site - Using wp-now and PHP-WASM',
+          name: 'WordPress site using Docker',
+          value: 'site-wp-docker',
+        },
+        {
+          name: 'WordPress site using wp-now (experimental)',
           value: 'site-wp-now',
         },
-        // {
-        //   name: 'WordPress site (Docker)',
-        //   value: 'site-docker',
-        // },
-        {
-          name: 'Static HTML page - Using Tangible Roller',
-          value: 'site-static-roller',
-        },
-        // {
-        //   name: 'Static HTML page - Using Vite',
-        //   value: 'site-static-vite',
-        // },
       ],
     },
     {
@@ -131,7 +123,7 @@ export async function createProject(options = {}) {
   const projectPath = path.join(cwd, projectName)
 
   const alias = {
-    static: 'site-static-roller',
+    static: 'site-roller',
     plugin: 'example-plugin',
     theme: 'example-theme',
     site: 'site-wp-now', // TODO: Replace with site-wp-env

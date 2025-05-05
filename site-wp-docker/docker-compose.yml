@@ -1,0 +1,49 @@
+services:
+  mysql:
+    image: mariadb:11.4
+    #ports:
+    #  - '3306'
+    environment:
+      MYSQL_ROOT_HOST: '%'
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: wordpress
+    restart: always
+    # Named volume for persistence
+    volumes:
+      - 'mysql:/var/lib/mysql'
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 128M
+  wordpress:
+    # build: .
+    depends_on:
+      - mysql
+    image: wordpress:php8.0
+    ports:
+      - '3333:80'
+    environment:
+      WORDPRESS_DB_USER: root
+      WORDPRESS_DB_PASSWORD: password
+      WORDPRESS_DB_NAME: wordpress
+    volumes: &ref_0
+      - .:/var/www/html
+    restart: always
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 256M
+  cli:
+    depends_on:
+      - wordpress
+    image: wordpress:cli-php8.0
+    volumes: *ref_0
+    user: '33:33'
+    environment:
+      WORDPRESS_DB_USER: root
+      WORDPRESS_DB_PASSWORD: password
+      WORDPRESS_DB_NAME: wordpress
+volumes:
+  mysql: {}

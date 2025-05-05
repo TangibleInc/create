@@ -15,16 +15,16 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
     recursive: true,
   })
 
-  test('static', async () => {
+  test('Static site', async () => {
 
     const name = 'test-site'
-    const title = 'Static HTML site'
-    const description = 'Description for site'
+    const title = 'Static HTML page'
+    const description = 'Description for the test site'
 
     await createProject({
       cwd: buildPath,
       project: {
-        type: 'site-static-roller',
+        type: 'site-roller',
         name,
         title,
         description,
@@ -52,7 +52,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
   })
 
-  test('plugin', async () => {
+  test('Plugin', async () => {
 
     const name = 'test-plugin'
     const title = 'My super plugin'
@@ -84,7 +84,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
   })
 
-  test('theme', async () => {
+  test('Theme', async () => {
 
     const name = 'test-theme'
     const title = 'Your next theme'
@@ -115,7 +115,38 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
     ok(content.includes(description), 'description in readme')
   })
 
-  test('site', async () => {
+  test('Site with Docker', async () => {
+
+    const name = 'test-site'
+    const title = 'Awesome site'
+    const description = 'Description for site'
+
+    await createProject({
+      cwd: buildPath,
+      project: {
+        type: 'site-wp-docker',
+        name,
+        title,
+        description,
+        overwrite: true,
+      },
+    })
+    ok(true, 'create site')
+
+    const folder = path.join(buildPath, name)
+    ok(await fs.exists(folder), 'project folder exists')
+
+    let pkg = await fs.readJson(path.join(folder, 'package.json'))
+
+    is(name, pkg.name, 'package name')
+
+    let content = await fs.readFile(path.join(folder, 'readme.md'), 'utf8')
+
+    ok(content.includes(`# ${title}`), 'title in readme')
+    ok(content.includes(description), 'description in readme')
+  })
+
+  test('Site with wp-now', async () => {
 
     const name = 'test-site'
     const title = 'Awesome site'

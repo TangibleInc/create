@@ -32,7 +32,7 @@
     "readme.md"
   ],
   "dependencies": {
-    "@inquirer/prompts": "^7.4.1",
+    "@inquirer/prompts": "^7.5.0",
     "case": "^1.6.3",
     "fs-extra": "^11.3.0",
     "globby": "^14.1.0",

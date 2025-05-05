@@ -4,7 +4,7 @@ A command-line tool to quickly set up new projects based on templates.
 
 ## Usage
 
-Prerequisites: Git and Node.js 18 or above
+Prerequisites: Linux, macOS, or [Windows Subsystem for Linux](https://learn.microsoft.com/en-us/windows/wsl/about); [Git](https://git-scm.com/), [Node](https://nodejs.org/en/) (version 20 and above)
 
 Run the tool to create a new project.
 

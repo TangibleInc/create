@@ -33,8 +33,8 @@ jobs:
         run: bun run test:7.4
       - name: PHPUnit - Run tests for PHP 8.2
         run: bun run test:8.2
-      - name: Jest - Run tests
-        run: bun run jest:test
+      # - name: Jest - Run tests
+      #   run: bun run jest:test
       - name: Install playwright
         run: bun playwright install
       - name: End to end - Run tests

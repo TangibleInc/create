@@ -38,13 +38,13 @@ npm run format
 
 ### Local dev site
 
-Start a local dev site using [`wp-now`](https://github.com/WordPress/playground-tools/blob/trunk/packages/wp-now/README.md).
+Start a local dev site using [`wp-env`](https://github.com/WordPress/playground-tools/blob/trunk/packages/wp-now/README.md).
 
 ```sh
-npm run now
+npm run start
 ```
 
-The default user is `admin` with `password`. Press CTRL + C to stop.
+For details see [Tests](#tests) below.
 
 #### Dev dependencies
 
@@ -86,7 +86,7 @@ npm run start
 
 This uses [`wp-env`](https://developer.wordpress.org/block-editor/reference-guides/packages/packages-env/) to quickly spin up a local dev and test environment, optionally switching between multiple PHP versions. It requires **Docker** to be installed. There are instructions available for installing Docker on [Windows](https://docs.docker.com/desktop/install/windows-install/), [macOS](https://docs.docker.com/desktop/install/mac-install/), and [Linux](https://docs.docker.com/desktop/install/linux-install/).
 
-Visit [http://localhost:8888](http://localhost:8888) to see the dev site, and [http://localhost:8889](http://localhost:8880) for the test site, whose database is cleared on every run.
+Visit [http://localhost:8888](http://localhost:8888) to see the dev site (default user `admin` with `password`); and [http://localhost:8889](http://localhost:8880) for the test site, whose database is cleared on every run.
 
 Before running tests, install PHPUnit as a dev dependency using Composer inside the container.
 

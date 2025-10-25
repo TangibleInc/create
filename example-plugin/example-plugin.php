@@ -3,7 +3,7 @@
  * Plugin Name: Example Plugin
  * Plugin URI: https://tangibleplugins.com/example-plugin
  * Description: Description of example plugin
- * Version: 0.1.1
+ * Version: 0.0.1
  * Author: Team Tangible
  * Author URI: https://teamtangible.com
  * License: GPLv2 or later
@@ -11,7 +11,7 @@
 use tangible\framework;
 use tangible\updater;
 
-define( 'EXAMPLE_PLUGIN_VERSION', '0.1.1' );
+define( 'EXAMPLE_PLUGIN_VERSION', '0.0.1' );
 
 require __DIR__ . '/vendor/tangible/framework/index.php';
 require __DIR__ . '/vendor/tangible/updater/index.php';

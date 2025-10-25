@@ -10,6 +10,6 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@tangible/roller": "^2.1.4"
+    "@tangible/roller": "^2.1.7"
   }
 }
